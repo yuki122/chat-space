@@ -42,6 +42,9 @@
 
 }
 
+.no-disp {
+  display: none;
+}
 
 .contents {
   display: flex;
@@ -160,15 +163,29 @@
       padding: 20px 40px;
       .message-form {
         display: flex;
-        .message-form__body-field {
+        .contents-main-input__field {
           flex-grow: 1;
           flex-basis: 0;
-          height: 50px;
-          border: none;
-          color: $gray-for-title;
-          font-size: 16px;
-          padding: 0 10px;
-          margin-right: 15px;
+          display: flex;
+          align-items: center;
+          .message-form__body-field {
+            flex-grow: 1;
+            flex-basis: 0;
+            height: 50px;
+            border: none;
+            color: $gray-for-title;
+            font-size: 16px;
+            padding: 0 10px;
+          }
+          .message-form__image-btn {
+            // TODO: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
+            $image-icon-width: 16px;
+            margin-left: -10px - $image-icon-width;
+            margin-right: 10px;
+          }
+        }
+        .message-form__submit-btn {
+          margin-left: 15px;
         }
       }
     }
