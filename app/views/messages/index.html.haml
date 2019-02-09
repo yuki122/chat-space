@@ -17,5 +17,6 @@
     .contents-main-group-header
       - locals = {group_name: "sampleグループ", show_users?: true, members: "yokoyama nakamataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
       = render partial: "groups/group", locals: locals
+      = link_to "Edit", "#", class: "btn--border"
     .contents-main-messages
     .contents-main-input

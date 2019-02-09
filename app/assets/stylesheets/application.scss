@@ -16,12 +16,32 @@
 .text-ellipsis {
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .text-word-break {
   word-break: break-all;
 }
+
+.btn {
+  text-decoration: none;
+  text-size: 16px;
+  // padding縦のautoは効かないので、flexで揃える
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background-color: $skyblue-for-btn;
+  color: white;
+}
+
+.btn--border {
+  @extend.btn;
+  border: solid 1.5px $skyblue-for-btn;
+  color: $skyblue-for-btn;
+  background-color: white;
+
+}
+
 
 .contents {
   display: flex;
@@ -82,16 +102,26 @@
 
     .contents-main-group-header {
       padding: 15px 40px;
+      display: flex;
       .group {
+        flex-grow: 1;
+        flex-basis: 0;
+        // flexで決めた横幅で子要素をellipsisするとバグる
+        // その親要素にもhiddenを追加することで解決
+        overflow: hidden;
         .group__name {
           font-size: 20px;
           color: #333333;
           margin: 15px 0;
         }
+        .group__users {
+          font-size: 12px;
+          color: $gray-for-desc;
+        }
       }
-      .group__users {
-        font-size: 12px;
-        color: $gray_for_desc;
+      a {
+        height: 40px;
+        margin: 28px 0 auto 20px;
       }
     }
     .contents-main-messages {
