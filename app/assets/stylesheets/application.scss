@@ -8,34 +8,34 @@
   display: flex;
   height: 100vh;
   width: 100%;
-  .side-contents {
+  .contents-side {
     width: 300px;
     display: flex;
     flex-direction: column;
-    .side-contents__user-header {
+    .contents-side-user-header {
       height: 100px; // TODO: 仮置き
       background-color: #253141;
     }
-    .side-contents__groups {
+    .contents-side-groups {
       flex: 1;
       background-color: #2f3e51;
     }
   }
 
-  .main-contents {
+  .contents-main {
     flex: 1;
     display: flex;
     flex-direction: column;
 
-    .main-contents__group-header {
+    .contents-main-group-header {
       height: 100px; // TODO: 仮置き
     }
-    .main-contents__messages {
+    .contents-main-messages {
       flex: 1;
       background-color: #FAFAFA;
       border-top: solid 1px #EEEEEE;
     }
-    .main-contents__input {
+    .contents-main-input {
       height: 100px; // TODO: 仮置き
       background-color: #DDDDDD;
     }
