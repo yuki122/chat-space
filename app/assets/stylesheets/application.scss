@@ -56,13 +56,16 @@
       background-color: #2f3e51;
       padding: 0 20px;
       .group {
+        padding: 20px 0;
         .group__name {
           font-size: 15px;
-          padding: 20px 0 5px;
+          margin-bottom: 5px;
+          // marginに対して行間が大きくなりすぎないようにする
+          line-height: 1em;
         }
       }
       .group__last-message {
-        padding-bottom: 20px;
+        margin-bottom: 20px;
         font-size: 11px;
       }
     }
@@ -78,7 +81,18 @@
     flex-direction: column;
 
     .contents-main-group-header {
-      height: 100px; // TODO: 仮置き
+      padding: 15px 40px;
+      .group {
+        .group__name {
+          font-size: 20px;
+          color: #333333;
+          margin: 15px 0;
+        }
+      }
+      .group__users {
+        font-size: 12px;
+        color: $gray_for_desc;
+      }
     }
     .contents-main-messages {
       flex-grow: 1;
@@ -86,10 +100,13 @@
       overflow-y: scroll;
       background-color: #FAFAFA;
       border-top: solid 1px #EEEEEE;
+
+      padding: 46px 40px 20px;
     }
     .contents-main-input {
       height: 100px; // TODO: 仮置き
       background-color: #DDDDDD;
+      padding: 20px 40px;
     }
   }
 }
