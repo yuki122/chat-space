@@ -1,6 +1,17 @@
 // パーシャルを読み込む
 @import "./reset";
 @import "./variable";
+@import "font-awesome";
+
+// fontawesomeのリンクのデフォルト色、アンダーラインを消す
+.icon-link {
+  text-decoration: none;
+  color: black;
+  &--white {
+    @extend.icon-link;
+    color: white;
+  }
+}
 
 .contents {
   // height: 100%;
@@ -15,6 +26,8 @@
     .contents-side-user-header {
       height: 100px; // TODO: 仮置き
       background-color: #253141;
+
+
     }
     .contents-side-groups {
       flex: 1;
