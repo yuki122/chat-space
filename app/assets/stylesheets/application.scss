@@ -54,6 +54,17 @@
       flex-basis: 0;
       overflow-y: scroll;
       background-color: #2f3e51;
+      padding: 0 20px;
+      .group {
+        .group__name {
+          font-size: 15px;
+          padding: 20px 0 5px;
+        }
+      }
+      .group__last-message {
+        padding-bottom: 20px;
+        font-size: 11px;
+      }
     }
   }
 
@@ -82,3 +93,4 @@
     }
   }
 }
+
