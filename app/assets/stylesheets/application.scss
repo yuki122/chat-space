@@ -131,7 +131,29 @@
       background-color: #FAFAFA;
       border-top: solid 1px #EEEEEE;
 
-      padding: 46px 40px 20px;
+      padding: 26px 40px 20px;
+
+      .message {
+        margin: 20px 0;
+        .message__header {
+          margin-bottom: 10px;
+          .message__header__user-name {
+            display: inline-block;
+            font-size: 16px;
+            color: $gray-for-title;
+            font-weight: bold;
+          }
+          .message__header__posted-at {
+            display: inline-block;
+            font-size: 12px;
+            color: $gray-for-desc;
+          }
+        }
+        .message__body {
+          font-size: 14px;
+          color: $gray-for-title;
+        }
+      }
     }
     .contents-main-input {
       background-color: #DDDDDD;

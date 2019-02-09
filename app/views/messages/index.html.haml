@@ -1,7 +1,7 @@
 .contents
   .contents-side
     .contents-side-user-header
-      %p.contents-side-user-header__name.text-word-break sampleaaaaaaaaaaaaaaa
+      %p.contents-side-user-header__name.text-word-break sampleaaaaaaaaa
 
       .contents-side-user-header__icons
         = link_to "#", class: "icon-link--white" do
@@ -19,6 +19,12 @@
       = render partial: "groups/group", locals: locals
       = link_to "Edit", "#", class: "btn--border"
     .contents-main-messages
+      -# TODO: 実装後元に戻す
+      - locals_arr = [{user_name: "yokoyama", posted_at: "2019/02/09/21:20:05", body: "CSSむずい"}, {user_name: "nakamata", posted_at: "2019/02/09/21:20:20", body: "うわああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"}]
+      -# 表示テストのため、大量に複製
+      - locals_arr = locals_arr * 5
+      - locals_arr.each do |locals|
+        = render partial: "messages/message", locals: locals
     .contents-main-input
       = form_tag "#", class: "message-form" do
         = text_field_tag :body, "", placeholder: "type a message", class: "message-form__body-field"
