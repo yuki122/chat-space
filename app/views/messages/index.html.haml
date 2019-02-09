@@ -20,3 +20,6 @@
       = link_to "Edit", "#", class: "btn--border"
     .contents-main-messages
     .contents-main-input
+      = form_tag "#", class: "message-form" do
+        = text_field_tag :body, "", placeholder: "type a message", class: "message-form__body-field"
+        = submit_tag "Send", disable_with: 'Sending...', class: "btn"

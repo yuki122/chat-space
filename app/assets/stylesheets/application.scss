@@ -134,9 +134,21 @@
       padding: 46px 40px 20px;
     }
     .contents-main-input {
-      height: 100px; // TODO: 仮置き
       background-color: #DDDDDD;
       padding: 20px 40px;
+      .message-form {
+        display: flex;
+        .message-form__body-field {
+          flex-grow: 1;
+          flex-basis: 0;
+          height: 50px;
+          border: none;
+          color: $gray-for-title;
+          font-size: 16px;
+          padding: 0 10px;
+          margin-right: 15px;
+        }
+      }
     }
   }
 }
