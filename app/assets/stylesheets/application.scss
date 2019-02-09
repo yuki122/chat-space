@@ -176,6 +176,10 @@
             color: $gray-for-title;
             font-size: 16px;
             padding: 0 10px;
+            // rows: 1;
+            // display: flex;
+            // align-items: center;
+            resize: none;
           }
           .message-form__image-btn {
             // TODO: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
