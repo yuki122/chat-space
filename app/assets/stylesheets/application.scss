@@ -1,3 +1,43 @@
 // パーシャルを読み込む
 @import "./reset";
 @import "./variable";
+
+.contents {
+  // height: 100%;
+  // width: 100%;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  .side-contents {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    .side-contents__user-header {
+      height: 100px; // TODO: 仮置き
+      background-color: #253141;
+    }
+    .side-contents__groups {
+      flex: 1;
+      background-color: #2f3e51;
+    }
+  }
+
+  .main-contents {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .main-contents__group-header {
+      height: 100px; // TODO: 仮置き
+    }
+    .main-contents__messages {
+      flex: 1;
+      background-color: #FAFAFA;
+      border-top: solid 1px #EEEEEE;
+    }
+    .main-contents__input {
+      height: 100px; // TODO: 仮置き
+      background-color: #DDDDDD;
+    }
+  }
+}
