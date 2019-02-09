@@ -14,20 +14,32 @@
 }
 
 .contents {
-  // height: 100%;
-  // width: 100%;
   display: flex;
-  height: 100vh;
+  // 文字列を折り返す前提なら、
+  // これで文字が多すぎても全コンテンツが表示されるはず
+  min-height: 100vh;
   width: 100%;
+  color: white;
   .contents-side {
     width: 300px;
     display: flex;
     flex-direction: column;
     .contents-side-user-header {
-      height: 100px; // TODO: 仮置き
       background-color: #253141;
-
-
+      display: flex;
+      align-items: center;
+      padding: 40px 20px;
+      .contents-side-user-header__name {
+        font-size: 16px;
+        font-weight: bold;
+        flex: 1;
+        // TODO: 他の要素にも適用が必要
+        word-break: break-all;
+        padding-right: 10px;
+      }
+      .contents-side-user-header__icons a {
+        padding-left: 5px;
+      }
     }
     .contents-side-groups {
       flex: 1;
