@@ -4,6 +4,20 @@
 @import "font-awesome";
 @import "user"; // TODO: moduleディレクトリの作成などが必要
 
+.flash {
+  .notice {
+    background-color: $skyblue-for-btn;
+    color: white;
+    text-align: center;
+  }
+  .alert {
+    // text-align: center;
+    background-color: #D65F4C;
+    color: white;
+    text-align: center;
+  }
+}
+
 // fontawesomeのリンクのデフォルト色、アンダーラインを消す
 .icon-link {
   text-decoration: none;
