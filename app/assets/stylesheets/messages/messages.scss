@@ -8,27 +8,27 @@
   height: 100vh;
   width: 100%;
 
-  .contents-side {
+  &-side {
     color: white;
     width: 300px;
     display: flex;
     flex-direction: column;
-    .contents-side-user-header {
+    &-user-header {
       background-color: #253141;
       display: flex;
       align-items: center;
       padding: 40px 20px;
-      .contents-side-user-header__name {
+      &__name {
         font-size: 16px;
         font-weight: bold;
         flex: 1;
         padding-right: 10px;
       }
-      .contents-side-user-header__icons a {
+      &__icons a {
         padding-left: 5px;
       }
     }
-    .contents-side-groups {
+    &-groups {
       flex-grow: 1;
       flex-basis: 0;
       overflow-y: scroll;
@@ -36,21 +36,21 @@
       padding: 0 20px;
       .group {
         padding: 20px 0;
-        .group__name {
+        &__name {
           font-size: 15px;
           margin-bottom: 5px;
           // marginに対して行間が大きくなりすぎないようにする
           line-height: 1em;
         }
       }
-      .group__last-message {
+      &__last-message {
         margin-bottom: 20px;
         font-size: 11px;
       }
     }
   }
 
-  .contents-main {
+  &-main {
     // 横には画面を伸ばしたくない時はbasisを0に
     flex-grow: 1;
     flex-basis: 0;
@@ -59,7 +59,7 @@
     display: flex;
     flex-direction: column;
 
-    .contents-main-group-header {
+    &-group-header {
       padding: 15px 40px;
       display: flex;
       .group {
@@ -68,12 +68,12 @@
         // flexで決めた横幅で子要素をellipsisするとバグる
         // その親要素にもhiddenを追加することで解決
         overflow: hidden;
-        .group__name {
+        &__name {
           font-size: 20px;
           color: #333333;
           margin: 15px 0;
         }
-        .group__users {
+        &__users {
           font-size: 12px;
           color: $gray-for-desc;
         }
@@ -83,7 +83,7 @@
         margin: 28px 0 auto 20px;
       }
     }
-    .contents-main-messages {
+    &-messages {
       flex-grow: 1;
       flex-basis: 0;
       overflow-y: scroll;
@@ -94,37 +94,37 @@
 
       .message {
         margin: 20px 0;
-        .message__header {
+        &__header {
           margin-bottom: 10px;
-          .message__header__user-name {
+          &__user-name {
             display: inline-block;
             font-size: 16px;
             color: $gray-for-title;
             font-weight: bold;
           }
-          .message__header__posted-at {
+          &__posted-at {
             display: inline-block;
             font-size: 12px;
             color: $gray-for-desc;
           }
         }
-        .message__body {
+        &__body {
           font-size: 14px;
           color: $gray-for-title;
         }
       }
     }
-    .contents-main-input {
+    &-input {
       background-color: #DDDDDD;
       padding: 20px 40px;
       .message-form {
         display: flex;
-        .contents-main-input__field {
+        &__field {
           flex-grow: 1;
           flex-basis: 0;
           display: flex;
           align-items: center;
-          .message-form__body-field {
+          &__body {
             flex-grow: 1;
             flex-basis: 0;
             height: 50px;
@@ -139,14 +139,14 @@
             // align-items: center;
             resize: none;
           }
-          .message-form__image-btn {
+          &__image {
             // FIXME: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
             $image-icon-width: 16px;
             margin-left: -10px - $image-icon-width;
             margin-right: 10px;
           }
         }
-        .message-form__submit-btn {
+        &__submit-btn {
           margin-left: 15px;
         }
       }
