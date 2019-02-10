@@ -1,0 +1,44 @@
+// fontawesomeのリンクのデフォルト色、アンダーラインを消す
+.icon-link {
+  text-decoration: none;
+  color: black;
+  cursor : pointer;
+  &--white {
+    @extend.icon-link;
+    color: white;
+  }
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text-word-break {
+  word-break: break-all;
+}
+
+.btn {
+  text-decoration: none;
+  text-size: 16px;
+  // padding縦のautoは効かないので、flexで揃える
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background-color: $light_blue;
+  color: white;
+}
+
+.btn--border {
+  @extend.btn;
+  border: solid 1.5px $light_blue;
+  color: $light_blue;
+  background-color: white;
+
+}
+
+.no-disp {
+  display: none;
+}
+
