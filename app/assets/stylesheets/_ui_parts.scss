@@ -26,14 +26,14 @@
   padding: 0 20px;
   display: flex;
   align-items: center;
-  background-color: $skyblue-for-btn;
+  background-color: $light_blue;
   color: white;
 }
 
 .btn--border {
   @extend.btn;
-  border: solid 1.5px $skyblue-for-btn;
-  color: $skyblue-for-btn;
+  border: solid 1.5px $light_blue;
+  color: $light_blue;
   background-color: white;
 
 }
