@@ -1,14 +1,14 @@
 .contents
-  .contents-side
-    .contents-side-user-header
-      %p.contents-side-user-header__name.text-word-break sampleaaaaaaaaa
+  .side-bar
+    .side-bar-user-header
+      %p.side-bar-user-header__name.text-word-break sampleaaaaaaaaa
 
-      .contents-side-user-header__icons
+      .side-bar-user-header__icons
         = link_to "#", class: "icon-link--white" do
           = fa_icon "edit"
         = link_to "#", class: "icon-link--white" do
           = fa_icon "cog"
-    .contents-side-groups
+    .side-bar-groups
       -# TODO: 実装後元に戻す
       - locals_arr = [{group_name: "aeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",show_last_message?: true,last_message: nil},{group_name: "sampleグループ",show_last_message?: true, last_message: "うわああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"},]
       - locals_arr.each do |locals|
