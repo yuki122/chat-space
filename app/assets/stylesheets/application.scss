@@ -3,6 +3,12 @@
 @import "./variable";
 @import "font-awesome";
 
+// FIXME: 全てapplication.scssに書いて良いのか？
+//        ディレクトリ分けするなど、良い運用法があれば教えていただきたい
+
+// FIXME: BEM命名規則に従えているのかについてFBお願い致します
+//        厳密にやりすぎるとクラス名がかなり長くなるので、難しいなと感じております
+
 // fontawesomeのリンクのデフォルト色、アンダーラインを消す
 .icon-link {
   text-decoration: none;
@@ -176,13 +182,15 @@
             color: $gray-for-title;
             font-size: 16px;
             padding: 0 10px;
+            // FIXME: textareaのrows:1がなぜか効かない（2行分が表示される）
+            //        index.html.haml:31でもrows: 1を指定したが効かない
             // rows: 1;
             // display: flex;
             // align-items: center;
             resize: none;
           }
           .message-form__image-btn {
-            // TODO: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
+            // FIXME: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
             $image-icon-width: 16px;
             margin-left: -10px - $image-icon-width;
             margin-right: 10px;
