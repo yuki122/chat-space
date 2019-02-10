@@ -1,25 +1,52 @@
 # README
+## DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### usersテーブル
+- 登録ユーザ
 
-Things you may want to cover:
+|column|type|Options|index|
+|------|----|-------|:---:|
+|email|string|null: false, unique: true|o|
+|name|string|null: false, unique: true|o|
+|devise_defaults||||
 
-* Ruby version
+#### Association
+- has_many :members
+- has_many :groups through :members
+- has_many :messages
 
-* System dependencies
+### groupsテーブル
+- usersが所属するチャットルーム
 
-* Configuration
+|column|type|Options|index|
+|------|----|-------|:---:|
+|name|string|null:false||
 
-* Database creation
+#### Association
+- has_many :members
+- has_many :users through :members
+- has_many :messages
 
-* Database initialization
+### membersテーブル
+- usersとgroupsの中間テーブル
 
-* How to run the test suite
+|column|type|Options|index|
+|------|----|-------|:---:|
+|user|references|null: false, foreign_key| |
+|group|references|null:false, foreign_key| |
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Association
+- belogns_to :group
+- belongs_to :user
 
-* Deployment instructions
+### messagesテーブル
+|column|type|Options|index|
+|------|----|-------|:---:|
+|body|text|||
+|image|string|||
+|group|references|null: false, foreign_key| |
+|user|references|null: false, foreign_key| |
 
-* ...
-# chat-space
+#### Association
+- belongs_to :group
+- belongs_to :user
