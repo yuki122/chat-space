@@ -7,7 +7,7 @@
 |column|type|Options|index|
 |------|----|-------|:---:|
 |email|string|null: false, unique: true|o|
-|name|string|null: false||
+|name|string|null: false, unique: true|o|
 |devise_defaults||||
 
 #### Association
@@ -32,8 +32,8 @@
 
 |column|type|Options|index|
 |------|----|-------|:---:|
-|user_id|integer|null: false, foreign_key| |
-|group_id|integer|null:false, foreign_key| |
+|user|references|null: false, foreign_key| |
+|group|references|null:false, foreign_key| |
 
 #### Association
 - belogns_to :group
@@ -42,10 +42,10 @@
 ### messagesテーブル
 |column|type|Options|index|
 |------|----|-------|:---:|
-|body|text|null:false||
+|body|text|||
 |image|string|||
-|group_id|integer|null: false, foreign_key| |
-|user_id|integer|null: false, foreign_key| |
+|group|references|null: false, foreign_key| |
+|user|references|null: false, foreign_key| |
 
 #### Association
 - belongs_to :group
