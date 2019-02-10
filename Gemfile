@@ -35,6 +35,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# hamlを導入
+gem "haml-rails", "~> 1.0"
+gem "font-awesome-rails"
+gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
+gem 'pry-doc'    # methodを表示
+gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
+gem 'pry-stack_explorer' # スタックをたどれる
 
 gem 'devise'
 

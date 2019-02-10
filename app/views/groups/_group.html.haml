@@ -1,0 +1,12 @@
+.group
+  -# TODO: 一時的に変数を定義、消す
+  -# %p.group__name = group.name
+  %p.group__name.text-word-break= group_name
+  -# local変数が与えられ、かつtrueの場合のみ
+  - if local_assigns[:show_users?]
+    -# TODO: 一時的に変数を定義、消す
+    -# %p.group__users Members: #{group.users.map(&:name).join(" ")}
+    %p.group__users.text-ellipsis Members: #{members}
+  - if local_assigns[:show_last_message?]
+    -# %p.group__last-message= group.last_message || "まだメッセージがありません。"
+    %p.group__last-message.text-ellipsis= last_message || "まだメッセージがありません。"
