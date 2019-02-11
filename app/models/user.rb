@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :members
   has_many :group, through: :members
+
+  validates :name, presence: true
 end
