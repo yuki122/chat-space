@@ -2,7 +2,8 @@
 @import "./reset";
 @import "config/colors";
 @import "font-awesome";
-@import "modules/user"; // TODO: moduleディレクトリの作成などが必要
+@import "modules/user";
+@import "modules/group";
 @import "modules/ui_parts";
 @import "modules/flash";
 @import "modules/side_bar";

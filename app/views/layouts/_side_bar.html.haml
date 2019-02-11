@@ -3,7 +3,7 @@
     %p.side-bar-user-header__name.text-word-break= current_user.name
 
     .side-bar-user-header__icons
-      = link_to "#", class: "icon-link--white" do
+      = link_to new_group_path, class: "icon-link--white" do
         = fa_icon "edit"
       = link_to edit_user_registration_path, class: "icon-link--white" do
         = fa_icon "cog"
