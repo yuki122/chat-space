@@ -4,6 +4,8 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    # チェックボックスデフォルト作成のめ
+    @group.user_ids = [current_user.id]
   end
 
   def create
@@ -23,6 +25,6 @@ class GroupsController < ApplicationController
 
   protected
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, {user_ids: []})
   end
 end
