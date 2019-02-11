@@ -2,12 +2,7 @@
   %h1 新規チャットグループ
   = form_for @group, html: {id: "new_group", class: "new_group"} do |f|
     - if @group.errors.any?
-      .group-form__errors
-        %h2
-          #{@group.errors.count}件のエラーが発生しました。
-        %ul
-          - @group.errors.full_messages.each do |msg|
-            %li= msg
+      = render partial: "layouts/form_errors", locals: {resource: @group}
     .group-form__field.clearfix
       .group-form__field--left
         -# モデルの日本語化を定義に従って表示
