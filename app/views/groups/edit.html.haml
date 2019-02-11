@@ -1,32 +1,3 @@
 .group-form
   %h1 チャットグループ編集
-  = form_for @group, method: :put, html: {id: "edit_group_#{@group.id}", class: "edit_group"} do |f|
-    - if @group.errors.any?
-      = render partial: "layouts/form_errors", locals: {resource: @group}
-
-    .group-form__field.clearfix
-      .group-form__field--left
-        = f.label :name, class: "group-form__label"
-      .group-form__field--right
-        = f.text_field :name, value: @group.name, placeholder: "グループ名を入力してください", class:  "group-form__input"
-    .group-form__field.clearfix
-      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-      /
-        <div class='group-form__field--left'>
-        <label class="group-form__label" for="group_チャットメンバーを追加">チャットメンバーを追加</label>
-        </div>
-        <div class='group-form__field--right'>
-        <div class='group-form__search clearfix'>
-        <input class='group-form__input' id='user-search-field' placeholder='追加したいユーザー名を入力してください' type='text'>
-        </div>
-        <div id='user-search-result'></div>
-        </div>
-    .group-form__field.clearfix
-      .group-form__field--left
-        = f.label :members, "チャットメンバー", class: "group-form__label"
-    .group-form__field.clearfix
-      .group-form__field--left
-      .group-form__field--right
-        / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
-        = f.collection_check_boxes :user_ids, User.all, :id, :name
-        = f.submit "Save", disable_with: 'Saveing...', class: "group-form__action-btn"
+  = render "form", group: @group

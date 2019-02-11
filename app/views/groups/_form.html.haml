@@ -1,0 +1,45 @@
+= form_for group do |f|
+  - if group.errors.any?
+    = render partial: "layouts/form_errors", locals: {resource: group}
+  .group-form__field.clearfix
+    .group-form__field--left
+      -# モデルの日本語化を定義に従って表示
+      -## なお、labelの表示名を第二引数で明示的に指定も可能
+      -## ex) = f.label :name, "グループ名", class: "group-form__label"
+      = f.label :name, class: "group-form__label"
+      / %label.group-form__label{:for => "group_name"} グループ名
+    .group-form__field--right
+      = f.text_field :name, placeholder: "グループ名を入力してください", class:  "group-form__input"
+      / %input#group_name.group-form__input{:name => "group[name]", :placeholder => "グループ名を入力してください", :type => "text"}/
+  .group-form__field.clearfix
+    / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+    /
+      <div class='group-form__field--left'>
+      <label class="group-form__label" for="group_チャットメンバーを追加">チャットメンバーを追加</label>
+      </div>
+      <div class='group-form__field--right'>
+      <div class='group-form__search clearfix'>
+      <input class='group-form__input' id='user-search-field' placeholder='追加したいユーザー名を入力してください' type='text'>
+      </div>
+      <div id='user-search-result'></div>
+      </div>
+  .group-form__field.clearfix
+    .group-form__field--left
+      = f.label :members, "チャットメンバー", class: "group-form__label"
+      / %label.group-form__label{:for => "group_チャットメンバー"} チャットメンバー
+    .group-form__field--right
+      / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
+      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+      /
+        <div id='group-users'>
+        <div class='group-user clearfix' id='group-user-22'>
+        <input name='group[user_ids][]' type='hidden' value='22'>
+        <p class='group-user__name'>seo_kyohei</p>
+        </div>
+        </div>
+      = f.collection_check_boxes :user_ids, User.all, :id, :name
+  .group-form__field.clearfix
+    .group-form__field--left
+    .group-form__field--right
+      = f.submit class: "group-form__action-btn"
+      / %input.group-form__action-btn{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/
