@@ -1,0 +1,14 @@
+.side-bar
+  .side-bar-user-header
+    %p.side-bar-user-header__name.text-word-break= current_user.name
+
+    .side-bar-user-header__icons
+      = link_to "#", class: "icon-link--white" do
+        = fa_icon "edit"
+      = link_to edit_user_registration_path, class: "icon-link--white" do
+        = fa_icon "cog"
+  .side-bar-groups
+    -# TODO: 実装後元に戻す
+    - locals_arr = [{group_name: "aeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",show_last_message?: true,last_message: nil},{group_name: "sampleグループ",show_last_message?: true, last_message: "うわああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"},]
+    - locals_arr.each do |locals|
+      = render partial: "groups/group", locals: locals
