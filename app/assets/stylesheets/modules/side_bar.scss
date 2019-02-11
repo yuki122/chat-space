@@ -25,7 +25,9 @@
     background-color: $side_blue_light;
     padding: 0 20px;
     .group {
-      padding: 20px 0;
+      // a.child_linkのクリック反応を親要素で受け取る
+      @extend .parent_link;
+      margin: 20px 0 40px;
       &__name {
         font-size: 15px;
         margin-bottom: 5px;
@@ -33,7 +35,6 @@
         line-height: 1em;
       }
       &__last-message {
-        margin-bottom: 20px;
         font-size: 11px;
       }
     }
