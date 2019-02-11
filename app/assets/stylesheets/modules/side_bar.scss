@@ -23,11 +23,11 @@
     flex-basis: 0;
     overflow-y: scroll;
     background-color: $side_blue_light;
-    padding: 0 20px;
     .group {
       // a.child_linkのクリック反応を親要素で受け取る
       @extend .parent_link;
-      margin: 20px 0 40px;
+      padding: 20px;
+      margin-bottom: 20px;
       &__name {
         font-size: 15px;
         margin-bottom: 5px;
@@ -36,6 +36,11 @@
       }
       &__last-message {
         font-size: 11px;
+      }
+      &--selected {
+        @extend .group;
+        background-color: $light_blue;
+        // color: black;
       }
     }
   }

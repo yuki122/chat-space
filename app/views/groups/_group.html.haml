@@ -1,3 +1,5 @@
-.group
+- # 選択中のグループかどうかを判定
+- is_selected = params[:group_id] == group.id.to_s
+%div{class: "group#{is_selected ? "--selected" : ""}"}
   %p.group__name.text-word-break= group.name
   = yield if block_given?

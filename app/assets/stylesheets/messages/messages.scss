@@ -21,7 +21,7 @@
     &-group-header {
       padding: 15px 40px;
       display: flex;
-      .group {
+      .group, .group--selected {
         flex-grow: 1;
         flex-basis: 0;
         // flexで決めた横幅で子要素をellipsisするとバグる
