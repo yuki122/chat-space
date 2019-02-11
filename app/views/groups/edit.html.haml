@@ -1,16 +1,14 @@
 .group-form
   %h1 チャットグループ編集
-  %form#edit_group_22.edit_group{"accept-charset" => "UTF-8", :action => "/groups/22", :method => "post"}
-    .group-form__errors
-      %h2
-        1件のエラーが発生しました。
-        %ul
-          %li エラーです
+  = form_for @group, method: :put, html: {id: "edit_group_#{@group.id}", class: "edit_group"} do |f|
+    - if @group.errors.any?
+      = render partial: "layouts/form_errors", locals: {resource: @group}
+
     .group-form__field.clearfix
       .group-form__field--left
-        %label.group-form__label{:for => "group_name"} グループ名
+        = f.label :name, class: "group-form__label"
       .group-form__field--right
-        %input#group_name.group-form__input{:name => "group[name]", :placeholder => "グループ名を入力してください", :type => "text", :value => "ほげー"}/
+        = f.text_field :name, value: @group.name, placeholder: "グループ名を入力してください", class:  "group-form__input"
     .group-form__field.clearfix
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       /
@@ -25,9 +23,10 @@
         </div>
     .group-form__field.clearfix
       .group-form__field--left
-        %label.group-form__label{:for => "group_チャットメンバー"} チャットメンバー
+        = f.label :members, "チャットメンバー", class: "group-form__label"
     .group-form__field.clearfix
       .group-form__field--left
       .group-form__field--right
         / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
-        %input.group-form__action-btn{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/
+        = f.collection_check_boxes :user_ids, User.all, :id, :name
+        = f.submit "Save", disable_with: 'Saveing...', class: "group-form__action-btn"
