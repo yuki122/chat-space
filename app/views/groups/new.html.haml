@@ -8,9 +8,11 @@
           %li エラーです
     .group-form__field.clearfix
       .group-form__field--left
-        %label.group-form__label{:for => "group_name"} グループ名
+        = f.label :name, "グループ名", class: "group-form__label"
+        / %label.group-form__label{:for => "group_name"} グループ名
       .group-form__field--right
-        %input#group_name.group-form__input{:name => "group[name]", :placeholder => "グループ名を入力してください", :type => "text"}/
+        = f.text_field :name, placeholder: "グループ名を入力してください", class:  "group-form__input"
+        / %input#group_name.group-form__input{:name => "group[name]", :placeholder => "グループ名を入力してください", :type => "text"}/
     .group-form__field.clearfix
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       /
@@ -25,7 +27,8 @@
         </div>
     .group-form__field.clearfix
       .group-form__field--left
-        %label.group-form__label{:for => "group_チャットメンバー"} チャットメンバー
+        = f.label :members, "チャットメンバー", class: "group-form__label"
+        / %label.group-form__label{:for => "group_チャットメンバー"} チャットメンバー
       .group-form__field--right
         / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
         / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
@@ -39,4 +42,5 @@
     .group-form__field.clearfix
       .group-form__field--left
       .group-form__field--right
-        %input.group-form__action-btn{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/
+        = f.submit "Save", disable_with: 'Saveing...', class: "group-form__action-btn"
+        / %input.group-form__action-btn{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/
