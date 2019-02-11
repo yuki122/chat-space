@@ -8,7 +8,10 @@
           %li エラーです
     .group-form__field.clearfix
       .group-form__field--left
-        = f.label :name, "グループ名", class: "group-form__label"
+        -# モデルの日本語化を定義に従って表示
+        -## なお、labelの表示名を第二引数で明示的に指定も可能
+        -## ex) = f.label :name, "グループ名", class: "group-form__label"
+        = f.label :name, class: "group-form__label"
         / %label.group-form__label{:for => "group_name"} グループ名
       .group-form__field--right
         = f.text_field :name, placeholder: "グループ名を入力してください", class:  "group-form__input"
