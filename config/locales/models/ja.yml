@@ -10,4 +10,5 @@ ja:
         name: ユーザ名
         password: パスワード
         password_confirmation: パスワード（確認用）
+        current_password: 現在のパスワード
         email: メールアドレス
