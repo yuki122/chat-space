@@ -79,6 +79,7 @@
       .message-form {
         display: flex;
         &__field {
+          // FIXME: なぜかrenderの時だけこれが効かない
           flex-grow: 1;
           flex-basis: 0;
           display: flex;

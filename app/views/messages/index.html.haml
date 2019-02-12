@@ -13,10 +13,12 @@
       - locals_arr.each do |locals|
         = render partial: "messages/message", locals: locals
     .contents-main-input
-      = form_tag "#", class: "message-form" do
+      = form_for [@group, @message], html: {class: "message-form"} do |f|
         .message-form__field
-          = text_area_tag :body, "", placeholder: "type a message", class: "message-form__field__body text-word-break", rows: 1
-          = label_tag :image, class: "message-form__field__image icon-link" do
+          -# TODO: text_fieldだと複数行無理・text_areaだと見た目が違う問題
+          -# = f.text_field :body, placeholder: "type a message", class: "message-form__field__body text-word-break"
+          = f.text_area :body, placeholder: "type a message", class: "message-form__field__body text-word-break"
+          = f.label :image, class: "message-form__field__image icon-link" do
             = fa_icon "image"
-            = file_field_tag :image, class: "no-disp"
-        = submit_tag "Send", disable_with: 'Sending...', class: "btn message-form__submit-btn"
+            = f.file_field :image, class: "no-disp"
+        = f.submit "Send", :disable_with => 'Sending...', class: "btn message-form__submit-btn"
