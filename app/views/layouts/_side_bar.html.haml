@@ -11,5 +11,5 @@
     -# render @groupsだと、内部的なforの中でblock引数を渡させないため、eachを用いる
     - @groups.each do |group|
       = render group do
-        %p.group__last-message= group.last_message || "まだメッセージがありません。"
+        %p.group__last-message= group.show_last_message
         = link_to "", group_messages_path(group), class: "child_link"

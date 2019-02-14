@@ -6,12 +6,7 @@
         %p.group__users Members: #{@group.users.map(&:name).join(" ")}
       = link_to "Edit", edit_group_path(@group), class: "btn--border"
     .contents-main-messages
-      -# TODO: 実装後元に戻す
-      - locals_arr = [{user_name: "yokoyama", posted_at: "2019/02/09/21:20:05", body: "CSSむずい"}, {user_name: "nakamata", posted_at: "2019/02/09/21:20:20", body: "うわああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"}]
-      -# 表示テストのため、大量に複製
-      - locals_arr = locals_arr * 5
-      - locals_arr.each do |locals|
-        = render partial: "messages/message", locals: locals
+      = render @messages
     .contents-main-input
       = form_for [@group, @message], html: {class: "message-form"} do |f|
         .message-form__field
