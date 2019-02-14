@@ -94,7 +94,7 @@
             padding: 0 10px;
             // FIXME: textareaのrows:1がなぜか効かない（2行分が表示される）
             //        index.html.haml:31でもrows: 1を指定したが効かない
-            // rows: 1;
+            rows: 1;
             resize: none;
           }
           &__image {
