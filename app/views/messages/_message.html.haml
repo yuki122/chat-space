@@ -3,5 +3,5 @@
     %p.message__header__user-name= message.user.name
     %p.message__header__posted-at= message.created_at
   .message__body= simple_format(message.body)
-  - if message.image
-    .message__img= image_tag message.image.to_s, alt: "投稿画像"
+  - if message.image.url
+    .message__img= image_tag message.image.url.to_s, alt: "投稿画像"
