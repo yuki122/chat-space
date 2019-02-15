@@ -40,6 +40,10 @@ $(function(){
       // 一番下までスクロールする
       messages_div.animate({scrollTop: messages_div[0].scrollHeight}, "fast");
       $(".message-form__field__body").val("");
+
+      // サイドバーのlast_messageも更新
+      $(".side-bar .group--selected .group__last-message").text(data.body);
+      // debugger
     }).fail(function(data){
       alert("error");
     });
