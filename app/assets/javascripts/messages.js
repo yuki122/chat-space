@@ -63,6 +63,8 @@ $(function(){
 
       // サイドバーのlast_messageも更新
       $(".side-bar .group--selected .group__last-message").text(data.body);
+      // flashメッセージも取り除く
+      $(".notification").empty();
     }).fail(function(data){
       alert("error");
     });
