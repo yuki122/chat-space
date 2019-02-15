@@ -1,4 +1,7 @@
 $(function(){
+  const formClass = ".message-form"
+  const bodyFieldClass = ".message-form__field__body"
+  const imageFieldId = "#message_image"
   function buildMessageImageHTML(imageURL) {
     if(!imageURL) { return ""; }
     return `
@@ -19,7 +22,7 @@ $(function(){
     `;
   }
 
-  $(".message-form").on("submit", function(e){
+  $(formClass).on("submit", function(e){
     const formData = new FormData(this);
     const url = $(this).attr("action");
     $.ajax({
@@ -39,11 +42,13 @@ $(function(){
       messages_div.append(buildMessageHTML(data));
       // 一番下までスクロールする
       messages_div.animate({scrollTop: messages_div[0].scrollHeight}, "fast");
-      $(".message-form__field__body").val("");
+
+      // フォームをクリア
+      $(bodyFieldClass).val("");
+      $(imageFieldId).val("")
 
       // サイドバーのlast_messageも更新
       $(".side-bar .group--selected .group__last-message").text(data.body);
-      // debugger
     }).fail(function(data){
       alert("error");
     });
