@@ -35,10 +35,11 @@ $(function(){
         alert(data.alert);
         return false;
       }
-      console.log(data);
-      $(".contents-main-messages").append(buildMessageHTML(data));
+      var messages_div = $(".contents-main-messages");
+      messages_div.append(buildMessageHTML(data));
+      // 一番下までスクロールする
+      messages_div.animate({scrollTop: messages_div[0].scrollHeight}, "fast");
       $(".message-form__field__body").val("");
-
     }).fail(function(data){
       alert("error");
     });
