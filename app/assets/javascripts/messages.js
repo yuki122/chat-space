@@ -62,7 +62,9 @@ $(function(){
       $(imageFieldId).val("")
 
       // サイドバーのlast_messageも更新
-      $(".side-bar .group--selected .group__last-message").text(data.body);
+      const sideMsg = data.body ? data.body : "画像が投稿されました"
+      $(".side-bar .group--selected .group__last-message").text(sideMsg);
+
       // flashメッセージも取り除く
       $(".notification").empty();
     }).fail(function(data){
