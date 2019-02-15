@@ -11,16 +11,24 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.group = @group
     if @message.save
-      redirect_to group_messages_path(@group), notice: "メッセージが送信されました"
+      respond_to do |format|
+        format.html {redirect_to group_messages_path(@group), notice: "メッセージが送信されました"}
+        format.json
+      end
     else
-      # renderのためにインスタンス変数を用意する必要
-      # @groups = current_user.groups
-      # set_messages
-      # flash.now[:alert] = "メッセージを入力して下さい"
-      # render :index
+      respond_to do |format|
+        format.html {
+          # renderのためにインスタンス変数を用意する必要
+          # @groups = current_user.groups
+          # set_messages
+          # flash.now[:alert] = "メッセージを入力して下さい"
+          # render :index
 
-      # flexboxがrenderだとなぜか効かないので、一旦redirectに
-      redirect_to group_messages_path(@group), alert: "メッセージを入力して下さい"
+          # flexboxがrenderだとなぜか効かないので、一旦redirectに
+          redirect_to group_messages_path(@group), alert: "メッセージを入力して下さい"
+        }
+        format.json {render json: {alert: "メッセージを入力して下さい"}}
+      end
     end
   end
 

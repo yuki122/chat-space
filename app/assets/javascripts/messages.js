@@ -10,9 +10,14 @@ $(function(){
       processData: false,
       contentType: false
     }).done(function(data){
+      // エラーハンドリング
+      if(data.alert) {
+        alert(data.alert);
+        return false;
+      }
+      console.log(data);
       $(".message-form__field__body").val("");
     }).fail(function(data){
-      console.log(data);
       alert("error");
     });
 
