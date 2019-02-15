@@ -2,6 +2,20 @@ $(function(){
   const formClass = ".message-form"
   const bodyFieldClass = ".message-form__field__body"
   const imageFieldId = "#message_image"
+
+  //cmdキー+エンターでフォーム送信
+  $(window).keydown(function(e){
+    //cmdキー+エンターの判定
+    if(event.metaKey && e.keyCode === 13){
+      // body入力中か、画像がアップロードされていればsubmit
+      if($(':focus').is(bodyFieldClass) || $(imageFieldId).val()) {
+        // formを送信
+        $(formClass).submit();
+        return false;
+      }
+    }
+  });
+
   function buildMessageImageHTML(imageURL) {
     if(!imageURL) { return ""; }
     return `
