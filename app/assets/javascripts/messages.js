@@ -13,10 +13,10 @@ $(function(){
         <p class="message__header__user-name">${message.user_name}</p>
         <p class="message__header__posted-at">${message.created_at}</p>
       </div>
-      <div class="message__body"><p>${message.body}</p></div>
+      <div class="message__body"><p>${message.body.replace(/\r?\n/g, '<br>')}</p></div>
       ${buildMessageImageHTML(message.image_url)}
     </div>
-    `
+    `;
   }
 
   $(".message-form").on("submit", function(e){
