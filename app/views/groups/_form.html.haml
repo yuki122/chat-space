@@ -25,16 +25,15 @@
       = f.label :members, "チャットメンバー", class: "group-form__label"
       / %label.group-form__label{:for => "group_チャットメンバー"} チャットメンバー
     .group-form__field--right
-      / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
-      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-      /
-        <div id='group-users'>
-        <div class='group-user clearfix' id='group-user-22'>
-        <input name='group[user_ids][]' type='hidden' value='22'>
-        <p class='group-user__name'>seo_kyohei</p>
-        </div>
-        </div>
-      = f.collection_check_boxes :user_ids, User.all, :id, :name
+      #group-users
+        / = f.collection_check_boxes :user_ids, User.all, :id, :name
+        - if group.persisted?
+          -# editの場合は、現在のメンバーを表示
+          - group.users.each do |user|
+            = render partial: "groups/form_member", locals: {user: user, f: f}
+        - else
+          -# newの場合は、current_userのみセット
+          = render partial: "groups/form_member", locals: {user: current_user, f: f}
   .group-form__field.clearfix
     .group-form__field--left
     .group-form__field--right
