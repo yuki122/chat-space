@@ -1,0 +1,5 @@
+.group-user.clearfix.js-chat-member{id: "group-user-#{user.id}"}
+  = f.hidden_field :user_ids, multiple: true, value: user.id
+  %p.group-user__name
+    = user.name
+  %a.user-search-remove.group-user__btn.group-user__btn--remove.js-remove-btn  削除
