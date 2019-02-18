@@ -5,6 +5,15 @@ class MessagesController < ApplicationController
     @groups = current_user.groups
     set_messages
     @message = Message.new
+    respond_to do |format|
+      format.html
+      format.json {
+        # 新しく追加されたもののみ取得
+        if params[:last_message_created_at]
+          @messages = @messages.where("created_at > ?", Message.parse_str_to_time(params[:last_message_created_at]))
+        end
+      }
+    end
   end
 
   def create

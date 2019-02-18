@@ -1,7 +1,7 @@
 .message
   .message__header
     %p.message__header__user-name= message.user.name
-    %p.message__header__posted-at= message.created_at
+    %p.message__header__posted-at= message.created_at_for_disp
   .message__body= simple_format(message.body)
   - if message.image.url
     .message__img= image_tag message.image.url.to_s, alt: "投稿画像"
