@@ -9,6 +9,21 @@ $(function(){
       `;
   }
 
+  function buildSelectedGroupUserHTML(user) {
+    return `
+    <div class='group-user clearfix js-chat-member' id='group-user-${user.id}'>
+      <input name='group[user_ids][]' type='hidden' value='${user.id}'>
+      <p class='group-user__name'>${user.name}</p>
+      <a class='user-search-remove group-user__btn group-user__btn--remove js-remove-btn'>削除</a>
+    </div>
+    `
+  }
+
+  function getSearchResultDiv(userId) {
+    // 階層が入れ子になってもいいように、find, closestを使う（parent, parentsでも動く）
+    return $("#user-search-result").find(`a[data-user-id='${userId}']`).closest(".group-user");
+  }
+
   // fieldに変化があった時のみ非同期通信でuser候補を表示
   var prev_typed = "";
   $("#user-search-field").on("keyup", function(e){
@@ -36,5 +51,27 @@ $(function(){
     }).fail(function(data){
       alert("ユーザの検索に失敗しました")
     });
+  });
+
+  // group-userが追加されるときのイベント
+  $("#user-search-result").on("click", ".user-search-add", function(){
+    const userId = $(this).attr("data-user-id");
+    const userName = $(this).attr("data-user-name");
+
+    // 検索一覧から消す
+    getSearchResultDiv(userId).hide();
+
+    // 選択欄に表示する
+    $("#group-users").append(buildSelectedGroupUserHTML({id: userId, name: userName}));
+  });
+
+  // group-userが削除されるときのイベント
+  $("#group-users").on("click", ".user-search-remove", function(){
+    const userId = $(this).siblings("input[name='group[user_ids][]']").val();
+    // 選択欄から削除
+    $(this).closest(".group-user").remove();
+
+    // 検索一覧に再表示
+    getSearchResultDiv(userId).show();
   });
 });
