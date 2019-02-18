@@ -1,7 +1,7 @@
 $(function(){
-  const formClass = ".message-form"
-  const bodyFieldClass = ".message-form__field__body"
-  const imageFieldId = "#message_image"
+  const formClass = ".message-form";
+  const bodyFieldClass = ".message-form__field__body";
+  const imageFieldId = "#message_image";
 
   //cmdキー+エンターでフォーム送信
   $(window).keydown(function(e){
@@ -75,3 +75,16 @@ $(function(){
     return false;
   });
 });
+
+// マイページ読み込み時に、チャット画面を即時下スクロール
+// turbolinkをきることで、ページ遷移時も機能する（onだとreloadの時のみに呼ばれる）
+$(function(){
+  console.log(document.URL);
+  console.log(!!document.URL.match(/groups\/\d+\/messages$/));
+  if(document.URL.match(/groups\/\d+\/messages$/)) {
+    console.log("load");
+    var messages_div = $(".contents-main-messages");
+    // 一番下までスクロールする
+    messages_div.scrollTop(messages_div[0].scrollHeight);
+  }
+})
