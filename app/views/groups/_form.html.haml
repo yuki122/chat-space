@@ -14,15 +14,12 @@
   .group-form__field.clearfix
     / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
     /
-      <div class='group-form__field--left'>
-      <label class="group-form__label" for="group_チャットメンバーを追加">チャットメンバーを追加</label>
-      </div>
-      <div class='group-form__field--right'>
-      <div class='group-form__search clearfix'>
-      <input class='group-form__input' id='user-search-field' placeholder='追加したいユーザー名を入力してください' type='text'>
-      </div>
-      <div id='user-search-result'></div>
-      </div>
+    .group-form__field--left
+      %label.group-form__label{for: "group_チャットメンバーを追加"} チャットメンバーを追加
+    .group-form__field--right
+      .group-form__search.clearfix
+        %input#user-search-field.group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}/
+      #user-search-result
   .group-form__field.clearfix
     .group-form__field--left
       = f.label :members, "チャットメンバー", class: "group-form__label"
