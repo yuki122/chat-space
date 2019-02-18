@@ -1,6 +1,6 @@
 $(function(){
 
-  function buildGroupUserHTML(user) {
+  function buildSearchResultHTML(user) {
     return `
       <div class="group-user clearfix">
         <p class="group-user__name">${user.name}</p>
@@ -17,6 +17,12 @@ $(function(){
       <a class='user-search-remove group-user__btn group-user__btn--remove js-remove-btn'>削除</a>
     </div>
     `
+  }
+
+  function getSelectedGroupUserIds() {
+    return $("input[name='group[user_ids][]']").get().map(function(input){
+      return ($(input).val() - 0); //intに変換
+    });
   }
 
   function getSearchResultDiv(userId) {
@@ -39,14 +45,20 @@ $(function(){
     // 空白文字は候補が多すぎるので、通信しない
     if(!typed) { return true; }
 
+    // 該当userを非同期で問い合わせ
     $.ajax({
       url: "/users",
       type: "GET",
       data: { name_cont: typed },
       dataType:"json"
     }).done(function(data){
+      // 検索結果に表示
       data.forEach(function(user){
-        resultDiv.append(buildGroupUserHTML(user));
+        resultDiv.append(buildSearchResultHTML(user));
+      });
+      // すでに選択されているものはあらかじめ非表示にする
+      getSelectedGroupUserIds().forEach(function(selectedId){
+        getSearchResultDiv(selectedId).hide();
       });
     }).fail(function(data){
       alert("ユーザの検索に失敗しました")
