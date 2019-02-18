@@ -36,6 +36,22 @@ $(function(){
     `;
   }
 
+  function addNewMessage(message, isLast=true) {
+    var messages_div = $(".contents-main-messages");
+    messages_div.append(buildMessageHTML(message));
+    // 一番下までスクロールする
+    messages_div.animate({scrollTop: messages_div[0].scrollHeight}, "fast");
+
+    if(isLast) {
+      // サイドバーのlast_messageも更新
+      const sideMsg = message.body ? message.body : "画像が投稿されました"
+      $(".side-bar .group--selected .group__last-message").text(sideMsg);
+
+      // flashメッセージも取り除く
+      $(".notification").empty();
+    }
+  }
+
   $(formClass).on("submit", function(e){
     const formData = new FormData(this);
     const url = $(this).attr("action");
@@ -52,21 +68,14 @@ $(function(){
         alert(data.alert);
         return false;
       }
-      var messages_div = $(".contents-main-messages");
-      messages_div.append(buildMessageHTML(data));
-      // 一番下までスクロールする
-      messages_div.animate({scrollTop: messages_div[0].scrollHeight}, "fast");
+
+      // 新しい投稿を表示
+      addNewMessage(data)
 
       // フォームをクリア
       $(bodyFieldClass).val("");
       $(imageFieldId).val("")
 
-      // サイドバーのlast_messageも更新
-      const sideMsg = data.body ? data.body : "画像が投稿されました"
-      $(".side-bar .group--selected .group__last-message").text(sideMsg);
-
-      // flashメッセージも取り除く
-      $(".notification").empty();
     }).fail(function(data){
       alert("error");
     });
@@ -74,15 +83,43 @@ $(function(){
     // これがないと連続でjsが実行されない（preventDefault()ではダメだった）
     return false;
   });
+
+
+  // 自動更新
+  $(function(){
+    const interval = 5000;//[ms]
+
+    function getCreatedAtOfLastMessage() {
+      return $(".message").last().find(".message__header__posted-at").text();
+    }
+
+    function updateMessages() {
+      $.ajax({
+        url: document.URL,
+        type: "GET",
+        data: {last_message_created_at: getCreatedAtOfLastMessage()},
+        dataType: "json"
+      }).done(function(data){
+        console.log(data);
+        // debugger
+        data.forEach(function(message, index){
+          let isLast = index === (data.length - 1);
+          // console.log(message, isLast)
+          addNewMessage(message, isLast);
+        });
+      }).fail(function(data) {
+        console.log("自動更新に失敗しました");
+      });
+    }
+    // 自動更新を設定
+    setInterval(updateMessages, interval);
+  });
 });
 
 // マイページ読み込み時に、チャット画面を即時下スクロール
 // turbolinkをきることで、ページ遷移時も機能する（onだとreloadの時のみに呼ばれる）
 $(function(){
-  console.log(document.URL);
-  console.log(!!document.URL.match(/groups\/\d+\/messages$/));
   if(document.URL.match(/groups\/\d+\/messages$/)) {
-    console.log("load");
     var messages_div = $(".contents-main-messages");
     // 一番下までスクロールする
     messages_div.scrollTop(messages_div[0].scrollHeight);
