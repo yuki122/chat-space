@@ -100,15 +100,12 @@ $(function(){
         data: {last_message_created_at: getCreatedAtOfLastMessage()},
         dataType: "json"
       }).done(function(data){
-        console.log(data);
-        // debugger
         data.forEach(function(message, index){
           let isLast = index === (data.length - 1);
-          // console.log(message, isLast)
           addNewMessage(message, isLast);
         });
       }).fail(function(data) {
-        console.log("自動更新に失敗しました");
+        // alertはうるさすぎるので、どのようにハンドリングすべきか
       });
     }
     // 自動更新を設定
