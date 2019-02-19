@@ -11,9 +11,4 @@ class Message < ApplicationRecord
   def created_at_for_disp
     self.created_at.strftime(TIME_FORMAT)
   end
-
-
-  def self.parse_str_to_time(str_time)
-    Time.strptime(str_time, TIME_FORMAT)
-  end
 end
