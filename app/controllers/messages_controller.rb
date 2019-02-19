@@ -9,8 +9,8 @@ class MessagesController < ApplicationController
       format.html
       format.json {
         # 新しく追加されたもののみ取得
-        if params[:last_message_created_at]
-          @messages = @messages.where("created_at > ?", Message.parse_str_to_time(params[:last_message_created_at]))
+        if params[:last_message_id]
+          @messages = @messages.where("id > ?", params[:last_message_id])
         end
       }
     end

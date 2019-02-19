@@ -25,7 +25,7 @@ $(function(){
   }
   function buildMessageHTML(message) {
     return `
-    <div class="message">
+    <div class="message" data-message-id="${message.id}"}>
       <div class="message__header">
         <p class="message__header__user-name">${message.user_name}</p>
         <p class="message__header__posted-at">${message.created_at}</p>
@@ -89,15 +89,15 @@ $(function(){
   $(function(){
     const interval = 5000;//[ms]
 
-    function getCreatedAtOfLastMessage() {
-      return $(".message").last().find(".message__header__posted-at").text();
+    function getLastMessageId() {
+      return $(".message").last().attr("data-message-id");
     }
 
     function updateMessages() {
       $.ajax({
         url: document.URL,
         type: "GET",
-        data: {last_message_created_at: getCreatedAtOfLastMessage()},
+        data: {last_message_id: getLastMessageId()},
         dataType: "json"
       }).done(function(data){
         data.forEach(function(message, index){
