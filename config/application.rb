@@ -23,5 +23,9 @@ module ChatSpace
     # 日本語化
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+
+    # 日本時間に変更
+    config.time_zone = 'Tokyo'
+    config.active_record.time_zone_aware_types = [:datetime, :time]
   end
 end
