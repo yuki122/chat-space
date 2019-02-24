@@ -25,19 +25,11 @@ class MessagesController < ApplicationController
         format.json
       end
     else
-      respond_to do |format|
-        format.html {
-          # renderのためにインスタンス変数を用意する必要
-          # @groups = current_user.groups
-          # set_messages
-          # flash.now[:alert] = "メッセージを入力して下さい"
-          # render :index
-
-          # flexboxがrenderだとなぜか効かないので、一旦redirectに
-          redirect_to group_messages_path(@group), alert: "メッセージを入力して下さい"
-        }
-        format.json {render json: {alert: "メッセージを入力して下さい"}}
-      end
+      # renderのためにインスタンス変数を用意する必要
+      @groups = current_user.groups
+      set_messages
+      flash.now[:alert] = "メッセージを入力して下さい"
+      render :index
     end
   end
 

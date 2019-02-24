@@ -27,5 +27,18 @@ module ChatSpace
     # 日本時間に変更
     config.time_zone = 'Tokyo'
     config.active_record.time_zone_aware_types = [:datetime, :time]
+
+    # field_with_errorsの設定
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      # 投稿フォームの時だけ、例外的にdivタグをつけないようにする
+      if instance.object.is_a?(Message) && !instance.object.persisted?
+        # field_with_errorsを出力しない
+        html_tag
+      else
+        # 通常はデフォルトの使用
+        "<div class=\"field_with_errors\">#{html_tag}</div>".html_safe
+      end
+    }
+>>>>>>> post
   end
 end
