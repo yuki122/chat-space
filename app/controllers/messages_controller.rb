@@ -14,13 +14,10 @@ class MessagesController < ApplicationController
       redirect_to group_messages_path(@group), notice: "メッセージが送信されました"
     else
       # renderのためにインスタンス変数を用意する必要
-      # @groups = current_user.groups
-      # set_messages
-      # flash.now[:alert] = "メッセージを入力して下さい"
-      # render :index
-
-      # flexboxがrenderだとなぜか効かないので、一旦redirectに
-      redirect_to group_messages_path(@group), alert: "メッセージを入力して下さい"
+      @groups = current_user.groups
+      set_messages
+      flash.now[:alert] = "メッセージを入力して下さい"
+      render :index
     end
   end
 
