@@ -84,22 +84,31 @@
           flex-basis: 0;
           display: flex;
           align-items: center;
+
+          $image-icon-width: 16px;
+
           &__body {
+            // なぜかtextfieldのpaddingはheightに影響
+            // padding分を取り除いたheightを設定する必要
+            $text-field-total-height: 50px;
+            $text-field-line-height: 20px;
+            $text-field-padding-vertical: ($text-field-total-height - $text-field-line-height)/2.0;
+
             flex-grow: 1;
             flex-basis: 0;
-            height: 50px;
+            height: $text-field-line-height;
             border: none;
             color: $black;
-            font-size: 16px;
-            padding: 0 10px;
-            // FIXME: textareaのrows:1がなぜか効かない（2行分が表示される）
-            //        index.html.haml:31でもrows: 1を指定したが効かない
-            rows: 1;
+            font-size: $text-field-line-height - 4px;
+            padding-top: $text-field-padding-vertical;
+            padding-bottom: $text-field-padding-vertical;
+            padding-left: 10px;
+            padding-right: $image-icon-width + 10px;
+            line-height: $text-field-line-height;
             resize: none;
           }
           &__image {
             // FIXME: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
-            $image-icon-width: 16px;
             margin-left: -10px - $image-icon-width;
             margin-right: 10px;
           }
