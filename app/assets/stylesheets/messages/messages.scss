@@ -111,6 +111,7 @@
             // FIXME: 他の書き方がないか調べる（iconのwidthをハードコーディングする必要）
             margin-left: -10px - $image-icon-width;
             margin-right: 10px;
+            z-index: 1;
           }
         }
         &__submit-btn {
